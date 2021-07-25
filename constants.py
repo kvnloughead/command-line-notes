@@ -6,6 +6,8 @@ BASE_PATH = Path(Path.home(), BASE_DIR)
 AUTHOR = 'Kevin Loughead'
 
 OPTIONS = {
+    'n': 'name',
+    'name': 'name',
     'c': 'category',
     'cat': 'category',
     'category': 'category',

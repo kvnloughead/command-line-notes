@@ -19,16 +19,16 @@ def parse_args(args):
 
     is parsed as ['main.py', 'edit', 'curl'], { 'category': 'cheatsheet', 'tags': 'bash,linux' }
     """
-    options = [OPTIONS[arg.replace('-', '')] for arg in args[3::2]]
-    kwargs = dict(zip(options, args[4::2]))
+    options = [OPTIONS[arg.replace('-', '')] for arg in args[2::2]]
+    kwargs = dict(zip(options, args[3::2]))
     kwargs = { **OPTION_DEFAULTS, **kwargs }
-    return args[:3], kwargs
+    return args[:2], kwargs
 
-[filename, action, name], kwargs = parse_args(sys.argv)
+[filename, action], kwargs = parse_args(sys.argv)
 print(kwargs)
 
 actions = {
-    'edit': edit(name, **kwargs),
+    'edit': edit(**kwargs),
 }
 
 if __name__ == '__main__':

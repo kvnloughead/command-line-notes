@@ -12,20 +12,20 @@ from datetime import date
 from constants import EDITOR, BASE_PATH
 from utils import mkdir
 
-def edit(filename, **kwargs):  
+def edit(**kwargs):  
     """
     Opens note file for editing, creating it if it doesn't already exist.
     args: filename: string, extension: string, category: string, tags: list of strings
     """
     mkdir(Path(BASE_PATH, kwargs['category']))
-    path = Path(BASE_PATH, kwargs['category'], f"{filename}.{kwargs['extension']}")
+    path = Path(BASE_PATH, kwargs['category'], f"{kwargs['name']}.{kwargs['extension']}")
     if not path.exists():
-        path.write_text(create_new_note(filename, **kwargs))
+        path.write_text(create_new_note(**kwargs))
     os.system(f'{EDITOR} {path}')
 
-def create_new_note(title, **kwargs):
+def create_new_note(**kwargs):
     meta_data = [
-        ['Title', title],
+        ['Title', kwargs['name']],
         ['Category', kwargs['category']],
         ['Author', kwargs['author'] ],
         ['Date', date.today()],
