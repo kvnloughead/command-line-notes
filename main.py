@@ -15,10 +15,12 @@ def parse_args(args):
     and the remaining arguments parsed into a dict of the form { 'option': value }.
     Example: 
     
-        $ note edit curl -category cheatsheet -tags bash,linux
+        $ note edit -n curl -c cheatsheet -t bash,linux
 
     is parsed as ['main.py', 'edit', 'curl'], { 'category': 'cheatsheet', 'tags': 'bash,linux' }
     """
+    if not args[2].startswith('-'): # make -name flag optional
+        args.insert(2, '-name')
     options = [OPTIONS[arg.replace('-', '')] for arg in args[2::2]]
     kwargs = dict(zip(options, args[3::2]))
     kwargs = { **OPTION_DEFAULTS, **kwargs }
