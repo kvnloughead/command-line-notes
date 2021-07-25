@@ -8,8 +8,7 @@
 import os
 from pathlib import Path
 
-EDITOR = 'code'
-BASE_PATH = Path(Path.home(), 'note-taker')
+from constants import EDITOR, BASE_PATH
 
 def edit(filename, category='default', extension='md', tags=[]):
     """

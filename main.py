@@ -6,7 +6,7 @@ appropriate module.
 
 import sys
 
-from constants import EDITOR, BASE_PATH, OPTIONS
+from constants import OPTIONS
 from edit import edit
 
 def parse_args(args):
