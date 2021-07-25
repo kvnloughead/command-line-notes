@@ -6,7 +6,7 @@ appropriate module.
 
 import sys
 
-from constants import OPTIONS
+from constants import OPTIONS, OPTION_DEFAULTS
 from edit import edit
 
 def parse_args(args):
@@ -21,9 +21,11 @@ def parse_args(args):
     """
     options = [OPTIONS[arg.replace('-', '')] for arg in args[3::2]]
     kwargs = dict(zip(options, args[4::2]))
+    kwargs = { **OPTION_DEFAULTS, **kwargs }
     return args[:3], kwargs
 
 [filename, action, name], kwargs = parse_args(sys.argv)
+print(kwargs)
 
 actions = {
     'edit': edit(name, **kwargs),
@@ -31,4 +33,3 @@ actions = {
 
 if __name__ == '__main__':
     actions[action]
-    edit(name, **kwargs)
