@@ -5,5 +5,5 @@ Intended functionality
   3. listing notes found in category, or by tag
 """
 
-def list():
-  
+def show(**kwargs):
+  print(kwargs)

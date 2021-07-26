@@ -24,4 +24,5 @@ OPTION_DEFAULTS = {
   'category': 'default',
   'extension': 'md',
   'author': f'{AUTHOR}',
+  'tags': '',
 }

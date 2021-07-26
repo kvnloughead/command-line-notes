@@ -9,14 +9,16 @@ import os
 from pathlib import Path
 from datetime import date
 
-from constants import EDITOR, BASE_PATH
-from utils import mkdir
+from parse import parse_edit_args
+from utils.constants import EDITOR, BASE_PATH
+from utils.helpers import mkdir
 
-def edit(**kwargs):  
+def edit(args):  
     """
     Opens note file for editing, creating it if it doesn't already exist.
     args: filename: string, extension: string, category: string, tags: list of strings
     """
+    kwargs = parse_edit_args(args)
     mkdir(Path(BASE_PATH, kwargs['category']))
     path = Path(BASE_PATH, kwargs['category'], f"{kwargs['name']}.{kwargs['extension']}")
     if not path.exists():
