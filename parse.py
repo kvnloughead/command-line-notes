@@ -25,3 +25,7 @@ def parse_edit_args(args):
     update_category_shelf(kwargs)
     return kwargs
 
+def parse_show_args(args):
+    options = [OPTIONS[arg.replace('-', '')] for arg in args[::2]]
+    kwargs = dict(zip(options, args[1::2]))
+    return kwargs

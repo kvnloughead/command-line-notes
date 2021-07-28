@@ -4,6 +4,13 @@ Intended functionality
   2. listing all tags
   3. listing notes found in category, or by tag
 """
+import os
 
-def show(**kwargs):
-  print(kwargs)
+from parse import parse_show_args
+from utils.constants import BASE_PATH
+
+def show(args):
+  kwargs = parse_show_args(args)
+  for dirpath, subdirectories, filenames in os.walk(BASE_PATH):
+    print(dirpath, subdirectories, filenames)
+  
