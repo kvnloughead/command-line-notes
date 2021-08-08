@@ -1,7 +1,7 @@
 from pathlib import Path
 
 EDITOR = 'code'
-BASE_DIR = 'note-taker'
+BASE_DIR = '.notes'
 BASE_PATH = Path(Path.home(), BASE_DIR)
 AUTHOR = 'Kevin Loughead'
 
