@@ -26,7 +26,7 @@ def edit(args):
     # os.system(f'{EDITOR} {path}')
     # kwargs = parse_edit_args(args)
     mkdir(Path(BASE_PATH, args.category))
-    path = Path(BASE_PATH, args.category, f"{args.name}.{args.extension}")
+    path = Path(BASE_PATH, args.category, f"{args.name[0]}.{args.extension}")
     if not path.exists():
         path.write_text(create_new_note(args))
     os.system(f'{EDITOR} {path}')
@@ -34,7 +34,7 @@ def edit(args):
     
 def create_new_note(args):
     meta_data = [
-        ['Title', args.name],
+        ['Title', args.name[0]],
         ['Category', args.category],
         ['Author', args.author],
         ['Date', date.today()],

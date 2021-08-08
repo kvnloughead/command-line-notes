@@ -4,7 +4,6 @@ usage notes. This file parses the command line arguments and calls the
 appropriate module.
 """
 
-import sys
 import argparse
 
 from utils.constants import AUTHOR
@@ -19,7 +18,7 @@ actions = parser.add_subparsers(title='available subcommands', dest='action',
                                 metavar='action')
 
 editParser = actions.add_parser('edit', help='opens new or existing note for editing')
-editParser.add_argument('-n', '--name', help='the name of the note file')
+editParser.add_argument('name', nargs=1, help='the name of the note file')
 editParser.add_argument('-c', '--category', help='specifies category of note; defaults to "default"',
                         default='default')
 editParser.add_argument('-t', '--tags', help='specifies category of note; defaults to "default"',
