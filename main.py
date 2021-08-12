@@ -1,13 +1,11 @@
 """
-Basic command line note-taking program. See individual action files for 
-usage notes. This file parses the command line arguments and calls the
-appropriate module.
+Basic command line note-taking program. See individual action files for usage notes. 
+This file parses the command line arguments and calls the appropriate module.
 """
 
 import argparse
 
 from utils.constants import AUTHOR
-from utils.errors import MESSAGES
 from edit import edit
 from show import show
 
@@ -19,9 +17,9 @@ actions = parser.add_subparsers(title='available subcommands', dest='action',
 
 editParser = actions.add_parser('edit', help='opens new or existing note for editing')
 editParser.add_argument('name', nargs=1, help='the name of the note file')
-editParser.add_argument('-c', '--category', help='specifies category of note; defaults to "default"',
-                        default='default')
-editParser.add_argument('-t', '--tags', help='specifies category of note; defaults to "default"',
+editParser.add_argument('-c', '--category', help='specifies category of note; defaults to "cheatsheet"',
+                        default='cheatsheet')
+editParser.add_argument('-t', '--tags', help='a comma separated list of tags',
                         default='')
 editParser.add_argument('-e', '--extension', help='extension of help file; defaults to .md',
                        default='md')

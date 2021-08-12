@@ -1,15 +1,14 @@
 """Creates new note or edits existing note.
    Usage  
-        $ note edit note-name -category category-name 
-                              -extension file-extension
-                              -tags comma,separated,tags
+        $ note edit note-name --category category-name 
+                              --extension file-extension
+                              --tags comma,separated,tags
 """
 
 import os
 from pathlib import Path
 from datetime import date
 
-from parse import parse_edit_args
 from utils.constants import EDITOR, BASE_PATH
 from utils.helpers import mkdir
 
@@ -18,13 +17,6 @@ def edit(args):
     Opens note file for editing, creating it if it doesn't already exist.
     args: filename: string, extension: string, category: string, tags: list of strings
     """
-    # kwargs = parse_edit_args(args)
-    # mkdir(Path(BASE_PATH, kwargs['category']))
-    # path = Path(BASE_PATH, kwargs['category'], f"{kwargs['name']}.{kwargs['extension']}")
-    # if not path.exists():
-    #     path.write_text(create_new_note(**kwargs))
-    # os.system(f'{EDITOR} {path}')
-    # kwargs = parse_edit_args(args)
     mkdir(Path(BASE_PATH, args.category))
     path = Path(BASE_PATH, args.category, f"{args.name[0]}.{args.extension}")
     if not path.exists():
@@ -47,19 +39,3 @@ def create_new_note(args):
     meta_data_string += '---  \n'
 
     return meta_data_string
-
-# def create_new_note(**kwargs):
-#     meta_data = [
-#         ['Title', kwargs['name']],
-#         ['Category', kwargs['category']],
-#         ['Author', kwargs['author'] ],
-#         ['Date', date.today()],
-#         ['Tags', kwargs['tags']]
-#     ]
-
-#     meta_data_string = '---  \n'
-#     for [key, value] in meta_data:
-#         meta_data_string += f"{key}: {value}  \n"
-#     meta_data_string += '---  \n'
-
-#     return meta_data_string
