@@ -18,7 +18,7 @@ def edit(args):
     args: filename: string, extension: string, category: string, tags: list of strings
     """
     mkdir(Path(BASE_PATH, args.category))
-    path = Path(BASE_PATH, args.category, f"{args.name[0]}.{args.extension}")
+    path = Path(BASE_PATH, args.category, f"{args.name}.{args.extension}")
     if not path.exists():
         path.write_text(create_new_note(args))
     os.system(f'{EDITOR} {path}')
@@ -26,7 +26,7 @@ def edit(args):
     
 def create_new_note(args):
     meta_data = [
-        ['Title', args.name[0]],
+        ['Title', args.nam`e],
         ['Category', args.category],
         ['Author', args.author],
         ['Date', date.today()],
