@@ -14,6 +14,7 @@ from edit import edit
 from delete import delete
 from show import show
 from open_all import open_all
+from push import push
 
 parser = argparse.ArgumentParser()
 
@@ -32,6 +33,7 @@ parser.add_argument('-d', '--delete', help='deletes the specified note', action=
 # used without `name` positional argument
 parser.add_argument('-s', '--show', help='shows all notes; usage: `cln -s`', action='store_true')
 parser.add_argument('-o', '--openall', help='opens notes directory in editor', action='store_true')
+parser.add_argument('-p', '--push', help='runs git add, commit and push in your notes directory', action='store_true')
 
 
 args = parser.parse_args()
@@ -42,6 +44,8 @@ elif (args.delete):
     action = delete
 elif (args.openall):
     action = open_all
+elif (args.push):
+    action = push
 else:
     action = edit
 
