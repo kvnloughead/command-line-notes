@@ -1,0 +1,1 @@
+1. re-implementing checking of singular/plural pairs when editing notes

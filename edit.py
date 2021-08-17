@@ -26,7 +26,7 @@ def edit(args):
     
 def create_new_note(args):
     meta_data = [
-        ['Title', args.nam`e],
+        ['Title', args.name],
         ['Category', args.category],
         ['Author', args.author],
         ['Date', date.today()],
