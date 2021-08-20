@@ -6,10 +6,11 @@ Intended functionality
 """
 import os
 
-from utils.constants import BASE_PATH
+from utils.constants import get_base_path
 from utils.dotdict import dotdict
 
 def show(args):
+  BASE_PATH = get_base_path(args)
   files = [f for f in os.listdir(BASE_PATH) if f[0] != '.']
   categories = [dotdict({'name': d, 'path': os.path.join(BASE_PATH, d)}) for d in files if os.path.isdir(os.path.join(BASE_PATH, d))]
   for c in categories:

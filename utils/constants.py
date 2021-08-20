@@ -1,8 +1,11 @@
 from pathlib import Path
 
 EDITOR = 'code'
-BASE_DIR = '.notes'
-BASE_PATH = Path(Path.home(), BASE_DIR)
+def get_base_dir(args):
+  return '.dev-notes' if args.dev else '.notes'
+def get_base_path(args):
+  print(get_base_dir(args))
+  return Path(Path.home(), get_base_dir(args))
 AUTHOR = 'Kevin Loughead'
 
 OPTIONS = {

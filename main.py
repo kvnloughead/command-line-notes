@@ -27,8 +27,8 @@ parser.add_argument('-e', '--extension', help='extension of help file; defaults 
                        default='md')
 parser.add_argument('-a', '--author', help='author of the note -- this could be you!',
                         default=AUTHOR)
-
 parser.add_argument('-d', '--delete', help='deletes the specified note', action='store_true')
+parser.add_argument('-dev', help='developer mode uses different directory for notes', action='store_true')
 
 # used without `name` positional argument
 parser.add_argument('-s', '--show', help='shows all notes; usage: `cln -s`', action='store_true')

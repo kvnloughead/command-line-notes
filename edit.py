@@ -9,7 +9,7 @@ import os
 from pathlib import Path
 from datetime import date
 
-from utils.constants import EDITOR, BASE_PATH
+from utils.constants import EDITOR, get_base_path
 from utils.helpers import mkdir
 
 def edit(args):  
@@ -17,6 +17,7 @@ def edit(args):
     Opens note file for editing, creating it if it doesn't already exist.
     args: filename: string, extension: string, category: string, tags: list of strings
     """
+    BASE_PATH = get_base_path(args)
     mkdir(Path(BASE_PATH, args.category))
     path = Path(BASE_PATH, args.category, f"{args.name}.{args.extension}")
     if not path.exists():
