@@ -1,8 +1,11 @@
 from pathlib import Path
+import os
 
-def mkdir(path, parents=True, exist_ok=False):
+def mkdir(path, base_path, args, parents=True, exist_ok=False):
     try: 
         Path(path).mkdir(parents=parents, exist_ok=exist_ok)
+        os.system(f'cd {base_path} && git init')
+        if args.dev: os.system(f'cd {base_path} && git checkout -b dev')
     except FileExistsError: 
         pass
 

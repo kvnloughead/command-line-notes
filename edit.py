@@ -18,7 +18,7 @@ def edit(args):
     args: filename: string, extension: string, category: string, tags: list of strings
     """
     BASE_PATH = get_base_path(args)
-    mkdir(Path(BASE_PATH, args.category))
+    mkdir(Path(BASE_PATH, args.category), BASE_PATH, args)
     path = Path(BASE_PATH, args.category, f"{args.name}.{args.extension}")
     if not path.exists():
         path.write_text(create_new_note(args))
