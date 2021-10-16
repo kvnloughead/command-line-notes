@@ -17,5 +17,4 @@ from commit import commit
 def push(args):
   BASE_PATH = get_base_path(args)
   commit(args)
-  # print(f'cd {BASE_PATH} && git push' + ' origin dev' if args.dev else '')
   os.system(f'cd {BASE_PATH} && git push' + ' origin dev' if args.dev else '')
