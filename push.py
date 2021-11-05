@@ -15,6 +15,8 @@ from utils.constants import get_base_path
 from commit import commit
 
 def push(args):
+  print('here')
   BASE_PATH = get_base_path(args)
   commit(args)
-  os.system(f'cd {BASE_PATH} && git push' + ' origin dev' if args.dev else '')
+  remote_repo = 'dev' if args.dev else ''
+  os.system(f'cd {BASE_PATH} && git push origin {remote_repo}')
