@@ -23,23 +23,31 @@ parser.add_argument('name', nargs='?', help='the name of the note file')
 
 # used with `name` positional argument
 parser.add_argument('-cat', '--category', help='specifies category of note; defaults to "cheatsheet"',
-                        default='default')
+                    default='default')
 parser.add_argument('-t', '--tags', help='a comma separated list of tags',
-                        default='')
+                    default='')
 parser.add_argument('-x', '--extension', help='extension of help file; defaults to .md',
-                       default='md')
+                    default='md')
 parser.add_argument('-a', '--author', help='author of the note -- this could be you!',
-                        default=AUTHOR)
-parser.add_argument('-d', '--delete', help='deletes the specified note', action='store_true')
-parser.add_argument('-e', '--editor', help='specifies editor; defaults to code')
-parser.add_argument('-n', '--nano', help='sets editor == nano', action='store_const', const='nano')
-parser.add_argument('-dev', help='developer mode uses different directory for notes', action='store_true')
+                    default=AUTHOR)
+parser.add_argument(
+    '-d', '--delete', help='deletes the specified note', action='store_true')
+parser.add_argument(
+    '-e', '--editor', help='specifies editor; defaults to code')
+parser.add_argument('-m', '--micro', help='sets editor == micro',
+                    action='store_const', const='micro')
+parser.add_argument(
+    '-dev', help='developer mode uses different directory for notes', action='store_true')
 
 # used without `name` positional argument
-parser.add_argument('-s', '--show', help='shows all notes; usage: `cln -s`', action='store_true')
-parser.add_argument('-o', '--openall', help='opens notes directory in editor', action='store_true')
-parser.add_argument('-p', '--push', help='runs git add, commit and push in your notes directory', action='store_true')
-parser.add_argument('-c', '--commit', help='runs git add and commit', action='store_true')
+parser.add_argument(
+    '-s', '--show', help='shows all notes; usage: `cln -s`', action='store_true')
+parser.add_argument(
+    '-o', '--openall', help='opens notes directory in editor', action='store_true')
+parser.add_argument(
+    '-p', '--push', help='runs git add, commit and push in your notes directory', action='store_true')
+parser.add_argument(
+    '-c', '--commit', help='runs git add and commit', action='store_true')
 
 
 args = parser.parse_args()
