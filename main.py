@@ -16,6 +16,7 @@ from show import show
 from open_all import open_all
 from push import push
 from commit import commit
+from grep import grep
 
 parser = argparse.ArgumentParser()
 
@@ -48,6 +49,8 @@ parser.add_argument(
     '-p', '--push', help='runs git add, commit and push in your notes directory', action='store_true')
 parser.add_argument(
     '-c', '--commit', help='runs git add and commit', action='store_true')
+parser.add_argument(
+    '-g', '--grep', help='greps notes; usage `cln -g foo` looks for "foo" inside all notes')
 
 
 args = parser.parse_args()
@@ -62,6 +65,8 @@ elif (args.push):
     action = push
 elif (args.commit):
     action = commit
+elif (args.grep):
+    action = grep
 else:
     action = edit
 

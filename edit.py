@@ -12,12 +12,13 @@ from datetime import date
 from utils.constants import EDITOR, get_base_path
 from utils.helpers import mkdir
 
-def edit(args):  
+
+def edit(args):
     """
     Opens note file for editing, creating it if it doesn't already exist.
     args: filename: string, extension: string, category: string, tags: list of strings
     """
-    editor = args.editor or args.nano or args.micro or EDITOR
+    editor = args.editor or args.micro or EDITOR
     BASE_PATH = get_base_path(args)
     mkdir(Path(BASE_PATH, args.category), BASE_PATH, args)
     path = Path(BASE_PATH, args.category, f"{args.name}.{args.extension}")
@@ -25,7 +26,7 @@ def edit(args):
         path.write_text(create_new_note(args))
     os.system(f'{editor} {path}')
 
-    
+
 def create_new_note(args):
     meta_data = [
         ['Title', args.name],
