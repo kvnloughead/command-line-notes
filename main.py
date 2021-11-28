@@ -17,6 +17,7 @@ from open_all import open_all
 from push import push
 from commit import commit
 from grep import grep
+from find import find
 
 parser = argparse.ArgumentParser()
 
@@ -51,6 +52,9 @@ parser.add_argument(
     '-c', '--commit', help='runs git add and commit', action='store_true')
 parser.add_argument(
     '-g', '--grep', help='greps notes; usage `cln -g foo` looks for "foo" inside all notes')
+parser.add_argument(
+    '-f', '--find', help='finds all files with similar names'
+)
 
 
 args = parser.parse_args()
@@ -67,6 +71,8 @@ elif (args.commit):
     action = commit
 elif (args.grep):
     action = grep
+elif (args.find):
+    action = find
 else:
     action = edit
 
