@@ -11,7 +11,7 @@ def find(args):
         category = root.split('/')[-1]
         files = [f for f in files if not f[0] == '.']
         dirs[:] = [d for d in dirs if not d[0] == '.']
-        found = [f for f in files if args.find in f]
+        found = [f for f in files if args.pattern in f]
         if len(found) > 0:
             foundSomething = True
             print(f'\n{category}')

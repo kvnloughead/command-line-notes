@@ -20,3 +20,19 @@ def yes_or_no(question):
             return True
         if reply[:1] == 'n':
             return False
+
+# this works, but I'm not sure if it is an improvement
+
+
+def create_subparser(name, action, options={}, arguments=[]):
+    """
+    `name` - the subparsers command
+    `action` - the function to be called by the command
+    `options` - a dict containing options to supply to subparser.add_parser
+    `arguments` - a list of dicts containing args to be passed to add_argmunent
+    """
+    subparser = subparsers.add_parser(name, **options)
+    for argument in arguments:
+        subparser.add_argument(**argument)
+    subparser.set_defaults(func=action)
+    return subparser

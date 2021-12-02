@@ -1,11 +1,20 @@
 """
-Runs `git add -A`, `git commit` and `git push` in your .notes directory
-(or .notes-dev if in -dev mode).
+Runs `git add -A`, `git commit` and `git push` in your .notes directory (or 
+`.notes-dev` if in -dev mode).
 
-Assumes a certain amount of setup, like running `git init` and syncing to gh. TODO - elaborate
+Always pushes to wherever you set the upstream repo. No support for anything
+fancy, like branches. But you can always run `cln opendir` to open the directory
+in your editor and git to your heart's content.
 
-Always pushes to wherever you set the upstream repo. No support for anything fancy, like branches. But
-you can always run `cln -o` to open the directory in your editor and git to your heart's content.
+Current assumes a certain amount of setup has already taken place. Here are the
+steps that are necessary prior to using `cln push`:
+    
+    1. run `git init` in `~/dev/.notes` 
+    2. create a repo on GH to store the notes
+    3. `git remote add origin main`
+    4. `git push -u origin main`
+    
+If you are using dev mode, change `.notes` to `.dev-notes` and `main` to `dev`.
 """
 
 import os
