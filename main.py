@@ -8,6 +8,7 @@ Usage
 """
 
 import argparse
+import sys
 
 from utils.constants import AUTHOR
 from edit import edit
@@ -59,7 +60,10 @@ parser.add_argument(
 
 args = parser.parse_args()
 
-if (args.show):
+if (not args.name):
+    parser.print_help()
+    sys.exit()
+elif (args.show):
     action = show
 elif (args.delete):
     action = delete
