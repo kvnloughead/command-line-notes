@@ -1,11 +1,18 @@
 from pathlib import Path
+from config import settings
 
-EDITOR = 'code'
+
+EDITOR = settings["EDITOR"] or 'nano'
+
 
 def get_base_dir(args):
-  return '.notes-dev' if args.dev else '.notes'
+    return '.notes-dev' if args.dev else '.notes'
+
+
 def get_base_path(args):
-  return Path(Path.home(), get_base_dir(args))
+    return Path(Path.home(), get_base_dir(args))
+
+
 AUTHOR = 'Kevin Loughead'
 
 OPTIONS = {
@@ -24,8 +31,8 @@ OPTIONS = {
 }
 
 OPTION_DEFAULTS = {
-  'category': 'default',
-  'extension': 'md',
-  'author': f'{AUTHOR}',
-  'tags': '',
+    'category': 'default',
+    'extension': 'md',
+    'author': f'{AUTHOR}',
+    'tags': '',
 }
