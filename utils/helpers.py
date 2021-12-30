@@ -1,4 +1,5 @@
 from pathlib import Path
+from datetime import date
 import os
 
 
@@ -21,18 +22,19 @@ def yes_or_no(question):
         if reply[:1] == 'n':
             return False
 
-# this works, but I'm not sure if it is an improvement
 
+def create_new_note(args):
+    meta_data = [
+        ['Title', args.name],
+        ['Category', args.category],
+        ['Author', args.author],
+        ['Date', date.today()],
+        ['Tags', args.tags]
+    ]
 
-def create_subparser(name, action, options={}, arguments=[]):
-    """
-    `name` - the subparsers command
-    `action` - the function to be called by the command
-    `options` - a dict containing options to supply to subparser.add_parser
-    `arguments` - a list of dicts containing args to be passed to add_argmunent
-    """
-    subparser = subparsers.add_parser(name, **options)
-    for argument in arguments:
-        subparser.add_argument(**argument)
-    subparser.set_defaults(func=action)
-    return subparser
+    meta_data_string = '---  \n'
+    for [key, value] in meta_data:
+        meta_data_string += f"{key}: {value}  \n"
+    meta_data_string += '---  \n'
+
+    return meta_data_string

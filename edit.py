@@ -7,7 +7,6 @@
 
 import os
 from pathlib import Path
-from datetime import date
 
 from utils.constants import EDITOR, get_base_path
 from utils.helpers import mkdir
@@ -25,20 +24,3 @@ def edit(args):
     if not path.exists():
         path.write_text(create_new_note(args))
     os.system(f'{editor} {path}')
-
-
-def create_new_note(args):
-    meta_data = [
-        ['Title', args.name],
-        ['Category', args.category],
-        ['Author', args.author],
-        ['Date', date.today()],
-        ['Tags', args.tags]
-    ]
-
-    meta_data_string = '---  \n'
-    for [key, value] in meta_data:
-        meta_data_string += f"{key}: {value}  \n"
-    meta_data_string += '---  \n'
-
-    return meta_data_string

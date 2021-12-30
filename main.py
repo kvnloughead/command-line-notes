@@ -19,6 +19,7 @@ from push import push
 from commit import commit
 from grep import grep
 from find import find
+from rename import rename
 
 parser = argparse.ArgumentParser()
 
@@ -83,6 +84,16 @@ find_parser = subparsers.add_parser(
 find_parser.add_argument(
     "pattern", help="the pattern to search for in the note names")
 find_parser.set_defaults(func=find)
+
+rename_parser = subparsers.add_parser(
+    "rename",
+    aliases="r",
+    help="`cln r oldname newname` renames the given note")
+rename_parser.add_argument(
+    "oldname", help="the name of the note to be renamed")
+rename_parser.add_argument(
+    "newname", help="the new name for the note")
+rename_parser.set_defaults(func=rename)
 
 
 parser.add_argument("-cat", "--category", help="specifies category of note; defaults to 'cheatsheet'",
