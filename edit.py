@@ -9,7 +9,7 @@ import os
 from pathlib import Path
 
 from utils.constants import EDITOR, get_base_path
-from utils.helpers import mkdir
+from utils.helpers import mkdir, create_new_note
 
 
 def edit(args):
