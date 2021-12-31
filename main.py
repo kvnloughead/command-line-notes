@@ -48,6 +48,8 @@ show_parser = subparsers.add_parser(
     "show",
     aliases=["s"],
     help="`cln show` prints a list of all notes to terminal")
+show_parser.add_argument(
+    "--pager", "-p", action="store_true", help="Pipes output of `cln show` to `less`.")
 show_parser.set_defaults(func=show)
 
 open_parser = subparsers.add_parser(
