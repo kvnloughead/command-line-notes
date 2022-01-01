@@ -98,12 +98,10 @@ rename_parser.add_argument(
 rename_parser.set_defaults(func=rename)
 
 
-parser.add_argument("-c", "--category", help="specifies category of note; defaults to 'cheatsheet'",
+parser.add_argument("-c", "--category", help="Specifies category of the note. Notes are organized into directories based on their category. Defaults to 'default'",
                     default="default")
-parser.add_argument("-t", "--tags", help="a comma separated list of tags",
+parser.add_argument("-t", "--tags", help="A comma separated list of tags. Currently not used.",
                     default="")
-parser.add_argument("-x", "--extension", help="extension of help file; defaults to .md",
-                    default="md")
 parser.add_argument("-a", "--author", help="author of the note -- this could be you!",
                     default=AUTHOR)
 parser.add_argument(
