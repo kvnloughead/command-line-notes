@@ -1,7 +1,10 @@
-"""Creates new note or edits existing note.
+"""Creates a new note or edits an existing note.
+
    Usage  
-        $ note edit note-name --category category-name 
-                              --tags comma,separated,tags
+        $ python3 main.py edit note-name --category category-name 
+                                         --tags comma,separated,tags
+                                         
+                                         
 """
 
 import os

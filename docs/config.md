@@ -7,8 +7,12 @@ Settings can be added to either a file at `~/.config/cln/settings.toml`, or `set
 CLN_DEV=True
 ```
 
-`author` - the default author of notes. Maybe it could be useful for someone. Can be overridden with `cln edit -a "author name"`. Defaults to an empty string.
+Most options can be overridden at run time with a the appropriate flag.
+
+## Available Options
+
+`author` - the default author of notes. Maybe it could be useful for someone. Can be overridden with the `-a` flag. Defaults to an empty string.
 
 `editor` - your editor of choice. This can be overridden at run time with the `-e` flag. Example `cln edit -e vim`. Defaults to `nano`.
 
-`dev` - Set to `True` to run `cln` in development mode. Basically this just sends notes to a different notes file and repo. I keep separate repos, one for personal use and one for development, adding `CLN_DEV=True` to a `.env` file in the latter.
+`dev` - Set to `True` to run `cln` in development mode. Can be overridden with the `-a` flag. Basically this just sends notes to a different notes file and repo. I keep separate repos, one for personal use and one for development, adding `CLN_DEV=True` to a `.env` file in the latter. 
