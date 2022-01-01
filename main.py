@@ -98,7 +98,7 @@ rename_parser.add_argument(
 rename_parser.set_defaults(func=rename)
 
 
-parser.add_argument("-cat", "--category", help="specifies category of note; defaults to 'cheatsheet'",
+parser.add_argument("-c", "--category", help="specifies category of note; defaults to 'cheatsheet'",
                     default="default")
 parser.add_argument("-t", "--tags", help="a comma separated list of tags",
                     default="")
