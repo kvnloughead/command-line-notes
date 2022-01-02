@@ -106,8 +106,6 @@ parser.add_argument("-a", "--author", help="The author of the note.",
                     default=AUTHOR)
 parser.add_argument(
     "-e", "--editor", help="specifies editor; defaults to code", default=EDITOR)
-parser.add_argument("-m", "--micro", help="sets editor == micro",
-                    action="store_const", const="micro")
 parser.add_argument(
     "-dev", help="Developer mode uses different directory for notes.", action="store_true", default=DEV)
 
