@@ -13,6 +13,7 @@ Most options can be overridden at run time with a the appropriate flag.
 
 `author` - the default author of notes. Maybe it could be useful for someone. Can be overridden with the `-a` flag. Defaults to an empty string.
 
-`editor` - your editor of choice. This can be overridden at run time with the `-e` flag. Example `cln edit -e vim`. Defaults to `nano`.
+`editor` - your editor of choice. This can be overridden at run time with the `-e` flag. Example `cln edit -e vim`. Defaults to `nano`. Since `nano` cannot open directories, the `opendir` command won't work by default, opening a file called `.notes` inside your user directory. To fix this, override the editor with `-e another-editor`.
 
-`dev` - Set to `True` to run `cln` in development mode. Can be overridden with the `-a` flag. Basically this just sends notes to a different notes file and repo. I keep separate repos, one for personal use and one for development, adding `CLN_DEV=True` to a `.env` file in the latter. 
+
+`dev` - set to `True` to run `cln` in development mode. Can be overridden with the `-a` flag. Basically this just sends notes to a different notes file and repo. I keep separate repos, one for personal use and one for development, adding `CLN_DEV=True` to a `.env` file in the latter. 

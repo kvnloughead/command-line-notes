@@ -1,4 +1,4 @@
-"""Opens the notes directory in editor."""
+"""Opens the notes directory in editor. If your chosen editor can't open directories, override it with `-e another-editor`."""
 
 import os
 

@@ -1,60 +1,61 @@
 # Command Line Notes
 
-A simple command line note taking utility. It's like [tldr](https://github.com/tldr-pages/tldr) but without all the features, and it's completely empty until you start using it.
+A simple command line note taking utility. Using the suggested aliases, you can create new markdown note files, or edit existing ones, with `cln edit note-name`. Notes are stored locally in `~/.notes` and are opened in the editor of your choice (defaults to `nano`. See [config.md](config.md) for details on how to change the defaults). Subcommands exist for 
 
+- renaming and deleting notes
+- grepping through the content of your notes
+- finding notes that match a pattern
+- printing a list of all notes to the terminal, or to a pager
+- opening the directory of notes in your editor of choice
+- pushing your notes to a remote repo (see [git-integration.md](./git-integration.md) for details)
 
 ## Installation
 
-1. Clone the repo into a directory that's in your PATH.[^1]
+1. Clone the repo.
 2. Open `~/.bashrc` and add the line `alias cln='python3 path/to/dir/main.py`. 
 3. Restart bash, or source bashrc with `source ~/.bashrc`.
+
+Now you should be able to run the program using the command `cln [args]` rather than `python3 path/to/main.py [args]`.
+
+If you don't want to use `nano` as your editor, you can change this quite easily. Simply add the line `editor = 'your-editor'` to `~/.config/cln/settings.toml. See [config.md](config.md).
 
 ## Basic usage
 
 ```bash
-cln foo
+cln edit foo
 ```
 
-opens a file `foo.md`, creating it if it doesn't already exist. Note files are saved in a directory `~/.notes` and are subdivided by category. The default category is cheatsheet, and feel free to just use that. 
+opens a file called `foo.md`, creating it if it doesn't already exist. Note files are saved in a directory `~/.notes` and are subdivided by category. The default category is `default`, and feel free to just use that. Notes are opened in your default editor.
+
+Note that most subcommands have an obvious alias. For example, the `edit` command has an alias of `e`. I will use the notation `edit|e` to indicate these pairs.
 
 ## Other Usage
 
 ```bash
-cln -h                    # get help
-cln -o                    # opens all your notes in your editor of choice
-                          # you may need to set your EDITOR in .bashrc
-cln foo -d                # deletes note named foo.md in default directory
-cln -s                    # lists all notes and categories in terminal
+cln -h                    # gets help
 
+cln delete|d foo          # deletes note named foo.md in default directory
+cln edit|e foo            # creates/opens note called foo.md for editing
+cln rename|r foo bar      # renames note called `foo.md` to `bar.md`
+
+cln find foo              # finds all notes with name containing `foo`
+cln grep pattern          # greps for the supplied pattern in your notes directory
+cln show|s                # lists all notes and categories in terminal
+
+cln commit|c              # runs `git add -A` and `git commit` in your notes file
+                          # supplies a default commit message with timestamp
+cln push|p                # runs `git add -A` and `git commit` in your notes file
+                          # supplies a default commit message with timestamp                          
+
+cln opendir|o             # opens all your notes in your editor of choice
+                          # since the default editor is nano, this won't work out of the box
 ```
 
-
-## Git integration
-Local git integration should work out of the box. When you create your first commit, the `~/.notes` directory is initialized with `git init`. Then to make a commit, simply run `cln -c`. A default commit message with a timestamp will be provided, but you can override this if you'd like.
-
-Github integration requires a few additional steps.
-
-1. Create a new repo on Github.
-2. Create a note and run `cln -c`.
-3. Run `git remote add origin path/to/notes/repo` in your local notes directory to set the remote.
-4. Run `cln -p` to push the `main` branch.
-
-Now anytime you want to push, you just run `cln -p`.  
 
 ## Development
-If you'd like to work on this app yourself, you can run it with the `-dev` flag. This only changes the directory in which notes are placed to `~/.notes-dev`. Then you don't have to worry about messing up your actual notes. I keep two instances of the repo, one for prod and one for dev, and add the following to `~/.bashrc`:
+If you'd like to work on this app yourself, set `DEV=True` in the config file, or in `.env`. In `.env`, you must prefix variables with `CLN_`. So you would use `CLN_DEV=True`. When in dev mode, notes are saved in a different directory (`~/.notes-dev`) and are pushed to the `dev` branch instead of `main`. So you can work on the app without messing with your personal notes. 
 
-```bash
-alias cln='python3 path/to/prod/version/main.py'   # production version
-alias clndv='python3 path/to/dev/version/main.py -dev' # development
-```
+Note that you can also work in dev mode by adding the `-dev` flag.
 
 ## Configuration
 App configuration is handled by setting environmental variables in `settings.yaml`. Currently not many options are available, but more will be added. See ([./config.md](config.md).
-
-## Dev Mode Git Integration
-The first time a note is created with the `-dev` flag, the `.notes-dev` directory is initialized as a git repo and a `dev` branch is created and checked out. All commits and pushes made with the `-dev` flag will occur in this branch. 
-
-To setup Github integration, you therefore need to follow the same steps with the `.notes-dev` directory. So you will wind up with two branches in your remote repo, with two separate local directories pointing to them.
-
-[^1] To add a directory to your path, you can run `echo export PATH="path/to/dir:$PATH" > ~/.bashrc`.
