@@ -7,10 +7,12 @@ Usage
         cln -s          # shows all notes, organized by category
 """
 
+from pathlib import Path
 import argparse
 import sys
+import os
 
-from utils.constants import AUTHOR, EDITOR, DEV
+from utils.constants import AUTHOR, EDITOR
 from edit import edit
 from delete import delete
 from show import show
@@ -21,6 +23,8 @@ from grep import grep
 from find import find
 from rename import rename
 
+os.environ['SETTINGS_FILE_FOR_DYNACONF'] = f'{Path.home()}/config/default.toml, <abs_path>/config1/settings.toml'
+
 
 def parse_args(args):
 
@@ -29,7 +33,10 @@ def parse_args(args):
 
     # top level args
     parser.add_argument(
-        "-dev", help="Developer mode uses different directory for notes.", action="store_true", default=DEV)
+        "-dev", help="Developer mode uses different directory for notes.", action="store_true", default=False)
+    parser.add_argument(
+        "-test", help="Runs app in test mode. Used solely in the testing suite.", action="store_true", default=False
+    )
 
     # parent parser with `e|editor` flag
     editor_parent_parser = argparse.ArgumentParser(add_help=False)
@@ -127,10 +134,10 @@ def parse_args(args):
     return parser, parser.parse_args(args)
 
 
-parser, args = parse_args(sys.argv[1:])
-
-if not "func" in args:
-    parser.print_help()
-    sys.exit()
-else:
-    args.func(args)
+if __name__ == "__main__":
+    parser, args = parse_args(sys.argv[1:])
+    if not "func" in args:
+        parser.print_help()
+        sys.exit()
+    else:
+        args.func(args)
