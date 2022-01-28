@@ -1,6 +1,6 @@
 # Command Line Notes
 
-A simple command line note taking utility. Using the suggested aliases, you can create new markdown note files, or edit existing ones, with `cln edit note-name`. Notes are stored locally in `~/.notes` and are opened in the editor of your choice (defaults to `nano`. See [config.md](config.md) for details on how to change the defaults). Subcommands exist for 
+A simple command line note taking utility. Using the suggested aliases, you can create new markdown note files, or edit existing ones, with `cln edit note-name`. Notes are stored locally in `~/.cln/notes` and are opened in the editor of your choice (defaults to `nano`. See [config.md](config.md) for details on how to change the defaults). Subcommands exist for 
 
 - renaming and deleting notes
 - grepping through the content of your notes
@@ -25,7 +25,7 @@ If you don't want to use `nano` as your editor, you can change this quite easily
 cln edit foo
 ```
 
-opens a file called `foo.md`, creating it if it doesn't already exist. Note files are saved in a directory `~/.notes` and are subdivided by category. The default category is `default`, and feel free to just use that. Notes are opened in your default editor.
+opens a file called `foo.md`, creating it if it doesn't already exist. Note files are saved in a directory `~/.cln/notes` and are subdivided by category. The default category is `default`, and feel free to just use that. Notes are opened in your default editor.
 
 Note that most subcommands have an obvious alias. For example, the `edit` command has an alias of `e`. I will use the notation `edit|e` to indicate these pairs.
 
@@ -53,7 +53,7 @@ cln opendir|o             # opens all your notes in your editor of choice
 
 
 ## Development
-If you'd like to work on this app yourself, set `DEV=True` in the config file, or in `.env`. In `.env`, you must prefix variables with `CLN_`. So you would use `CLN_DEV=True`. When in dev mode, notes are saved in a different directory (`~/.notes-dev`) and are pushed to the `dev` branch instead of `main`. So you can work on the app without messing with your personal notes. 
+If you'd like to work on this app yourself, set `DEV=True` in the config file, or in `.env`. In `.env`, you must prefix variables with `CLN_`. So you would use `CLN_DEV=True`. When in dev mode, notes are saved in a different directory (`~/.cln/notes-dev`) and are pushed to the `dev` branch instead of `main`. So you can work on the app without messing with your personal notes. 
 
 Note that you can also work in dev mode by adding the `-dev` flag.
 

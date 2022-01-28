@@ -1,0 +1,14 @@
+[default]
+author = ''
+editor = 'nano'
+
+[production]
+author = 'Kevin Loughead'
+editor = 'code'
+
+[development]
+author = 'dev author'
+editor = 'code'
+
+[testing]
+author = 'test author'

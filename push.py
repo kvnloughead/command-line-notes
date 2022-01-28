@@ -9,7 +9,7 @@ in your editor and git to your heart's content.
 Current assumes a certain amount of setup has already taken place. Here are the
 steps that are necessary prior to using `cln push`:
     
-    1. run `git init` in `~/.notes`
+    1. run `git init` in `~/.cln/notes`
     2. create a repo on GH to store the notes
     3. `git remote add origin main`
     4. `git push -u origin main`
