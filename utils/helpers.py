@@ -6,22 +6,9 @@ import os
 def mkdir(path, base_path, args, parents=True, exist_ok=False):
     try:
         Path(path).mkdir(parents=parents, exist_ok=exist_ok)
-        # os.system(f'cd {base_path} && git init')
-        # if os.system(f'cd {base_path} && git rev-parse --is-inside-work-tree >/dev/null 2>&1'):
-        #     os.system(f'cd {base_path} && git init')
-        # else:
-        #     os.system(f'cd {base_path}')
-        # print(
-        #     os.system(f'cd {base_path} && git rev-parse --show-toplevel 2>/dev/null'))
-        # print(os.getcwd())
-        print('base_path', base_path)
-        # TODO - compare Path to string from os.system
-        print(type(base_path))
         if os.system(f'cd {base_path} && git rev-parse --show-toplevel 2>/dev/null') != base_path:
-            print('true')
             os.system(f'cd {base_path} && git init')
         else:
-            print('false')
             os.system(f'cd {base_path}')
     except FileExistsError:
         pass

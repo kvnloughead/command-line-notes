@@ -124,6 +124,7 @@ def parse_args(args):
     rename_parser = subparsers.add_parser(
         "rename",
         aliases="r",
+        parents=[metadata_parent_parser],
         help="`cln r oldname newname` renames the given note")
     rename_parser.add_argument(
         "oldname", help="the name of the note to be renamed")
